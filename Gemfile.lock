@@ -246,6 +246,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  execjs (~> 2.7)
   hirb
   jbuilder (~> 2.5)
   jquery-rails
