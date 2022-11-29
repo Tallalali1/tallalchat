@@ -5,7 +5,7 @@ databases:
 
 services:
   - type: web
-    plan: free
+    plans: free
     name: tallalchat
     env: ruby
     buildCommand: "./bin/render-build.sh"
