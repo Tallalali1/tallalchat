@@ -1,0 +1,19 @@
+databases:
+  - name: tallalchat
+    databaseName: tallalchat_production
+    user: tallalchat
+
+services:
+  - type: web
+    name: tallalchat
+    env: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tallalchat
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
