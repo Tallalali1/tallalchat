@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 # Hirb.enable in console
 gem 'hirb'
+gem 'will_paginate'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
