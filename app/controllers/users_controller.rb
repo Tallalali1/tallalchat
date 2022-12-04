@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
 
   end
+
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
   end
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   def update
 
     if @user.update(user_params)
-      flash[:notice] = "Your account information was successfully updated"
+      flash[:success] = "Your account information was successfully updated"
       redirect_to @user
     else
       render 'edit'
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome #{@user.username}, you have successfully signed up"
+      flash[:success] = "Welcome #{@user.username}, you have successfully signed up"
       redirect_to root_path
     else
       render 'new'
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     session[:user_id] = nil if @user == current_user
-    flash[:notice] = "Account and all associated articles successfully deleted"
+    flash[:success] = "Account and all associated articles successfully deleted"
     redirect_to root_path
   end
 
@@ -57,7 +58,7 @@ class UsersController < ApplicationController
 
   def require_same_user
     if current_user != @user
-      flash[:alert] = "You can only edit or delete your own account"
+      flash[:error] = "You can only edit or delete your own account"
       redirect_to @user
     end
   end
